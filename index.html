@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>교사 효능감 자기진단 | 장흥초 2026</title>
+<style>
+:root{--bg:#fff;--bg2:#f5f5f4;--bg3:#efede8;--bgi:#e6f1fb;--bgs:#eaf3de;--bgw:#faeeda;--bgd:#fcebeb;--tx:#1a1a18;--tx2:#5f5e5a;--txi:#185fa5;--txs:#3b6d11;--txw:#854f0b;--txd:#a32d2d;--bri:rgba(0,0,0,.12);--br2:rgba(0,0,0,.22);--brci:#378add;--brcs:#639922;--brcw:#ba7517;--f:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif}
+@media(prefers-color-scheme:dark){:root{--bg:#1e1e1c;--bg2:#2a2a27;--bg3:#333330;--bgi:#0c447c;--bgs:#27500a;--bgw:#633806;--bgd:#791f1f;--tx:#f0ede8;--tx2:#b4b2a9;--txi:#85b7eb;--txs:#c0dd97;--txw:#fac775;--txd:#f09595;--bri:rgba(255,255,255,.12);--br2:rgba(255,255,255,.22);--brci:#85b7eb;--brcs:#c0dd97;--brcw:#fac775}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--f);background:var(--bg3);min-height:100vh;padding:1.5rem 1rem 5rem;color:var(--tx)}
+input,select,textarea,button{font-family:var(--f)}
+@keyframes bn{0%,80%,100%{transform:scale(.6)}40%{transform:scale(1)}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const GW = "https://script.google.com/macros/s/AKfycbz5cVIcB4So3OQiNcNljRdHQYklBVTMDr0_YSZf0LQoWY8issP2fWBJ7XxDzlhf0gVb/exec";
+
+const SA={id:"A",col:"i",title:"교수 활동 전반 효능감",sub:"TALIS 2024 TQ_27",
+  sc:["1\n낮은\n수준","2\n보통\n수준","3\n높은\n수준","4\n매우 높은\n수준"],
+  it:["나는 학생들이 어려운 과제를 해결하도록 다양한 방법으로 도울 수 있다.","나는 학생들에게 수업 내용에 대한 대안적인 설명을 제공할 수 있다.","나는 수업을 방해하는 학생들을 적절히 지도하여 수업 흐름을 유지할 수 있다.","나는 학생들이 비판적으로 사고하도록 돕는 질문을 만들어 낼 수 있다.","나는 학생들이 수업에 가치를 부여하도록 동기를 부여할 수 있다.","나는 다양한 학생 수준에 맞게 수업을 조정하는 능력이 있다.","나는 어려운 학생들을 이해하도록 돕는 좋은 전략을 알고 있다.","나는 학생들이 나의 수업 기대치를 명확히 이해하도록 할 수 있다.","나는 학급에서 방해가 되는 행동을 미리 예방하거나 최소화할 수 있다.","나는 학생들이 학습에 적극적으로 참여하도록 유도할 수 있다.","나는 수업 목표를 달성할 수 있는 다양한 교수 방법을 구사할 수 있다.","나는 학생들이 학습한 내용을 일상생활과 연결하도록 도울 수 있다.","나는 학교 정책과 학생의 요구 사이에 균형을 유지할 수 있다.","나는 어려운 학생들을 위해 적절한 도전 활동을 제공할 수 있다.","나는 학생들이 수업 중 자신의 이해 정도를 점검하도록 도울 수 있다.","나는 학생들의 개별적인 학습 필요를 수업에서 적절히 반영할 수 있다.","나는 모든 학생이 성장하도록 도울 수 있다.","나는 학생들 간의 성취 격차를 줄이도록 지원할 수 있다."]};
+const SB={id:"B",col:"s",title:"정서 지원 효능감",sub:"TALIS 2024 TQ_61·62",
+  sc:["1\n낮은\n수준","2\n보통\n수준","3\n높은\n수준","4\n매우 높은\n수준"],
+  it:["나는 학생들이 정서적 어려움을 겪을 때 적절히 지원할 수 있다.","나는 학생들이 학교생활에서 소속감을 느끼도록 도울 수 있다.","나는 학생 간 갈등이 발생했을 때 효과적으로 중재할 수 있다.","나는 학생들의 사회적·정서적 발달에 긍정적인 영향을 미칠 수 있다.","나는 학급 내 심리적으로 안전한 분위기를 형성할 수 있다."]};
+const SC={id:"C",col:"w",title:"전문성 학습 필요 영역",sub:"TALIS 2024 TQ_24",
+  sc:["현재\n필요 없음","약간\n필요함","어느 정도\n필요함","매우 많이\n필요함"],
+  it:["학생 평가의 실제 (과정 중심 평가, 형성평가 등)","개별화 학습 방법 (수준별 수업, 학생 맞춤 지원 등)","학생의 사회정서적 학습 지원 방법","학급에서의 학생 행동 관리 및 생활지도","학생 평가 결과의 분석 및 수업 개선 연계","디지털 도구와 자료를 활용한 교수법","교수학습 활동에서의 인공지능(AI) 활용","교사와 학부모(보호자) 간 협력 방법"]};
+const SD={id:"D",col:"d",title:"전문성 학습 참여 방해 요인",sub:"TALIS 2024 TQ_25",
+  sc:["전혀\n동의 안 함","동의\n안 함","동의함","매우\n동의함"],
+  it:["비용이 너무 많이 든다.","학교 차원의 지원이 부족하다.","전문성 학습 활동과 업무 일정이 겹친다.","학교 업무나 다른 일로 인해 시간이 부족하다.","나에게 적합한 전문성 학습 활동이 없다.","물리적 거리 때문에 참여하기 어렵다. (농촌·소규모 학교 맥락)","전문성 학습 참여에 따른 인센티브나 지원이 없다."]};
+const SECS=[SA,SB,SC,SD];
+const ST=[1,19,24,32];
+const CM={i:{bg:"var(--bgi)",tx:"var(--txi)",br:"var(--brci)"},s:{bg:"var(--bgs)",tx:"var(--txs)",br:"var(--brcs)"},w:{bg:"var(--bgw)",tx:"var(--txw)",br:"var(--brcw)"},d:{bg:"var(--bgd)",tx:"var(--txd)",br:"#f09595"}};
+
+var S={step:0,info:{name:"",career:"",grade:"",timing:""},resp:{},free:{q39:"",q40:""},saving:false,err:"",aiLoad:false,aiTxt:null,savedInfo:null,aData:[],anData:[],aView:"sum",selAI:null,page:"survey"};
+
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function e(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+// 자동저장
+function save(){try{localStorage.setItem("jh_draft",JSON.stringify({step:S.step,info:S.info,resp:S.resp,free:S.free}));}catch(x){}}
+function load(){try{var d=JSON.parse(localStorage.getItem("jh_draft")||"null");if(d&&d.step>0){S.step=d.step;S.info=Object.assign(S.info,d.info||{});S.resp=d.resp||{};S.free=d.free||{q39:"",q40:""};}return d&&d.step>0;}catch(x){return false;}}
+function clear(){try{localStorage.removeItem("jh_draft");}catch(x){}}
+
+function render(){document.getElementById("app").innerHTML=S.page==="admin"?rAdmin():S.step===6?rResult():rSurvey();}
+
+async function api(body){var r=await fetch(GW,{method:"POST",headers:{"Content-Type":"text/plain"},body:JSON.stringify(body)});return r.json();}
+async function apiG(p){var q=Object.keys(p).map(function(k){return k+"="+encodeURIComponent(p[k]);}).join("&");var r=await fetch(GW+"?"+q);return r.json();}
+
+// ── 설문 ────────────────────────────────────────────────────────
+function rSurvey(){
+  var pct=Math.round(S.step/6*100);
+  var lb=["기본정보","섹션A","섹션B","섹션C","섹션D","서술형","AI분석"];
+  var ok=sOk();
+  var h='<div style="max-width:700px;margin:0 auto;padding:1rem 0 4rem">';
+  h+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">';
+  h+='<div><div style="font-size:15px;font-weight:500;color:var(--tx)">교사 효능감 및 전문성 학습 자기진단</div>';
+  h+='<div style="font-size:11px;color:var(--tx2)">장흥초등학교 · 2026학년도 연구학교 · TALIS 2024 기반</div></div>';
+  h+='<button onclick="openAdmin()" style="font-size:11px;padding:4px 10px;border:0.5px solid var(--bri);border-radius:6px;background:transparent;cursor:pointer;color:var(--tx2)">관리자</button></div>';
+  h+='<div style="height:4px;background:var(--bri);border-radius:2px;margin-bottom:4px"><div style="height:4px;width:'+pct+'%;background:var(--txi);border-radius:2px;transition:width .3s"></div></div>';
+  h+='<div style="display:flex;justify-content:space-between;margin-bottom:1.25rem">';
+  for(var i=0;i<lb.length;i++){
+    var canGo=(i<S.step)||(i===S.step)||(i===S.step+1&&sOk()&&i<=5);
+    h+='<button onclick="goStep('+i+')" '+(canGo?"":"disabled")+' style="font-size:10px;color:'+(i===S.step?"var(--txi)":i<S.step?"var(--txs)":"var(--tx2)")+';background:none;border:none;cursor:'+(canGo?"pointer":"default")+';padding:2px 4px;border-radius:4px;font-weight:'+(i===S.step?600:400)+';text-decoration:'+(i<S.step?"underline":"none")+'">'+lb[i]+'</button>';
+  }
+  h+='</div>';
+  if(S.step===0)h+=rBasic();
+  else if(S.step>=1&&S.step<=4)h+=rSec(SECS[S.step-1],ST[S.step-1]);
+  else if(S.step===5)h+=rFree();
+  if(S.err)h+='<div style="margin-top:1rem;padding:10px 14px;background:var(--bgd);border-radius:8px;font-size:13px;color:var(--txd)">'+e(S.err)+'</div>';
+  h+='<div style="display:flex;gap:8px;margin-top:1.5rem">';
+  if(S.step>0)h+='<button onclick="prev()" style="flex:1;padding:11px;font-size:13px;background:var(--bg2);color:var(--tx2);border:0.5px solid var(--bri);border-radius:8px;cursor:pointer">← 이전</button>';
+  if(S.step<5)h+='<button onclick="next()" '+(ok?"":"disabled")+' style="flex:2;padding:11px;font-size:14px;font-weight:500;background:'+(ok?"var(--bgi)":"var(--bg2)")+';color:'+(ok?"var(--txi)":"var(--tx2)")+';border:none;border-radius:8px;cursor:'+(ok?"pointer":"not-allowed")+';opacity:'+(ok?1:.5)+'">다음 →</button>';
+  if(S.step===5)h+='<button onclick="submit()" '+(S.saving?"disabled":"")+' style="flex:2;padding:11px;font-size:14px;font-weight:500;background:var(--bgs);color:var(--txs);border:none;border-radius:8px;cursor:'+(S.saving?"not-allowed":"pointer")+';opacity:'+(S.saving?.6:1)+'">'+( S.saving?"저장 중...":"최종 제출 ✓")+'</button>';
+  h+='</div>';
+  if(S.step>=1&&S.step<=4){var sec=SECS[S.step-1];var dn=sec.it.filter(function(_,i){return S.resp[sec.id+"_"+i]!==undefined;}).length;h+='<div style="text-align:right;font-size:11px;color:var(--tx2);margin-top:6px">'+dn+'/'+sec.it.length+' 항목 응답됨</div>';}
+  h+='</div>';
+  return h;
+}
+
+function rBasic(){
+  var c=CM.i;
+  var h='<div style="border-bottom:2px solid '+c.br+';padding-bottom:.75rem;margin-bottom:1rem"><div style="font-size:16px;font-weight:500">기본 정보</div><div style="font-size:12px;color:'+c.tx+'">응답 시작 전 아래 정보를 입력해 주세요</div></div>';
+  h+='<div style="background:var(--bg);border:0.5px solid var(--bri);border-radius:12px;padding:1.25rem;display:flex;flex-direction:column;gap:16px">';
+  h+='<div><label style="display:block;font-size:12px;font-weight:500;color:var(--tx2);margin-bottom:5px">성명 (익명 가능)</label>';
+  h+='<input value="'+e(S.info.name)+'" oninput="S.info.name=this.value;save()" placeholder="홍길동 또는 익명" style="width:100%;font-size:13px;padding:9px 10px;border-radius:6px;border:0.5px solid var(--bri);background:var(--bg2);color:var(--tx)"></div>';
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">';
+  h+='<div><label style="display:block;font-size:12px;font-weight:500;color:var(--tx2);margin-bottom:5px">교직 경력 (년)</label>';
+  h+='<input type="number" min="0" max="50" value="'+e(S.info.career)+'" oninput="S.info.career=this.value;save()" placeholder="예: 7" style="width:100%;font-size:13px;padding:9px 10px;border-radius:6px;border:0.5px solid var(--bri);background:var(--bg2);color:var(--tx)"></div>';
+  h+='<div><label style="display:block;font-size:12px;font-weight:500;color:var(--tx2);margin-bottom:5px">담당 학년</label>';
+  h+='<select onchange="S.info.grade=this.value;save()" style="width:100%;font-size:13px;padding:9px 10px;border-radius:6px;border:0.5px solid var(--bri);background:var(--bg2);color:var(--tx)"><option value="">선택</option>';
+  ["1학년","2학년","3학년","4학년","5학년","6학년","복식","전담"].forEach(function(g){h+='<option value="'+g+'"'+(S.info.grade===g?" selected":"")+'>'+g+'</option>';});
+  h+='</select></div></div>';
+  h+='<div><label style="display:block;font-size:12px;font-weight:500;color:var(--tx2);margin-bottom:5px">참여 구분 *</label><div style="display:flex;gap:8px">';
+  [["pre","사전 조사 (3월)"],["post","사후 조사 (10월)"]].forEach(function(p){
+    var sel=S.info.timing===p[0];
+    h+='<button onclick="S.info.timing=\''+p[0]+'\';save();render()" style="flex:1;padding:11px 0;font-size:13px;border-radius:8px;border:0.5px solid '+(sel?c.br:"var(--bri)")+';background:'+(sel?c.bg:"var(--bg2)")+';color:'+(sel?c.tx:"var(--tx2)")+';cursor:pointer;font-weight:'+(sel?500:400)+'">'+p[1]+'</button>';
+  });
+  h+='</div></div>';
+  h+='<div style="font-size:11px;color:var(--tx2);line-height:1.6;padding:8px 10px;background:var(--bg2);border-radius:6px">※ 이 설문은 연구 목적으로만 사용되며 개인 정보는 익명으로 처리됩니다.</div>';
+  h+='</div>';
+  return h;
+}
+
+function rSec(sec,sn){
+  var c=CM[sec.col];
+  var h='<div style="border-bottom:2px solid '+c.br+';padding-bottom:.75rem;margin-bottom:.75rem"><div style="font-size:16px;font-weight:500">섹션 '+sec.id+'. '+sec.title+'</div><div style="font-size:12px;color:'+c.tx+'">'+sec.sub+' | '+sec.it.length+'문항</div></div>';
+  h+='<div style="font-size:12px;color:var(--tx2);margin-bottom:.75rem;line-height:1.6">각 항목에 대해 현재 자신의 상태에 가장 가까운 것을 선택해 주세요.</div>';
+  h+='<div style="display:grid;grid-template-columns:1fr repeat(4,56px);gap:4px;margin-bottom:6px"><div></div>';
+  sec.sc.forEach(function(s){h+='<div style="font-size:10px;text-align:center;color:'+c.tx+';line-height:1.3;white-space:pre-line;background:'+c.bg+';border-radius:4px;padding:4px 2px">'+s+'</div>';});
+  h+='</div><div style="display:flex;flex-direction:column;gap:5px">';
+  sec.it.forEach(function(item,idx){
+    var k=sec.id+"_"+idx,v=S.resp[k];
+    h+='<div style="display:grid;grid-template-columns:1fr repeat(4,56px);gap:4px;align-items:center;background:'+(idx%2===0?"var(--bg)":"var(--bg2)")+';border-radius:8px;padding:9px 10px;border:0.5px solid '+(v!==undefined?c.br:"var(--bri)")+'">';
+    h+='<div style="font-size:13px;line-height:1.55;padding-right:6px"><span style="color:var(--tx2);font-size:11px;margin-right:4px">'+(sn+idx)+'.</span>'+e(item)+'</div>';
+    for(var sc=0;sc<4;sc++){var sel=v===sc;h+='<button onclick="setR(\''+k+'\','+sc+')" style="width:40px;height:40px;border-radius:50%;border:'+(sel?'2px solid '+c.br:'0.5px solid var(--br2)')+';background:'+(sel?c.bg:"var(--bg)")+';cursor:pointer;display:flex;align-items:center;justify-content:center;margin:0 auto"><div style="width:14px;height:14px;border-radius:50%;background:'+(sel?c.tx:"transparent")+';border:'+(sel?"none":"1.5px solid var(--br2)")+'"></div></button>';}
+    h+='</div>';
+  });
+  h+='</div>';
+  return h;
+}
+
+function rFree(){
+  var c=CM.i;
+  var h='<div style="border-bottom:2px solid '+c.br+';padding-bottom:.75rem;margin-bottom:1rem"><div style="font-size:16px;font-weight:500">서술형 응답</div><div style="font-size:12px;color:'+c.tx+'">선택사항 · 솔직하게 서술해 주세요</div></div>';
+  h+='<div style="display:flex;flex-direction:column;gap:14px">';
+  [{k:"q39",n:39,q:"현재 가장 자신 있는 교수·생활지도 영역은 무엇인가요?"},{k:"q40",n:40,q:"올해 가장 성장하고 싶은 역량 영역과 그 이유를 써 주세요."}].forEach(function(item){
+    h+='<div style="background:var(--bg);border:0.5px solid var(--bri);border-radius:12px;overflow:hidden"><div style="background:'+c.bg+';padding:10px 14px;font-size:13px;font-weight:500;color:'+c.tx+'">'+item.n+'. '+item.q+'</div>';
+    h+='<textarea oninput="S.free.'+item.k+'=this.value;save()" placeholder="자유롭게 서술해 주세요..." style="width:100%;min-height:90px;padding:12px 14px;font-size:13px;border:none;background:transparent;color:var(--tx);resize:vertical;line-height:1.7;outline:none;font-family:var(--f)">'+e(S.free[item.k])+'</textarea></div>';
+  });
+  h+='<div style="font-size:11px;color:var(--tx2)">※ 모든 문항을 작성하셨다면 최종 제출 버튼을 눌러 주세요.</div></div>';
+  return h;
+}
+
+// ── AI 결과 화면 ────────────────────────────────────────────────
+function rResult(){
+  var secs=parse(S.aiTxt||"");
+  var cm={"종합 진단":"i","우선 성장 영역":"w","맞춤 추천 프로그램":"s","이달의 실천 과제":"d"};
+  var scores=calcScores();
+  var secDefs=[{id:"A",label:"교수 활동 전반\n효능감",col:"i",max:4},{id:"B",label:"정서 지원\n효능감",col:"s",max:4},{id:"C",label:"전문성 학습\n필요 영역",col:"w",max:4},{id:"D",label:"참여\n방해 요인",col:"d",max:4}];
+  var h='<div style="max-width:720px;margin:0 auto;padding:1rem 0 4rem">';
+
+  // 저장 완료 배너
+  h+='<div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--bgs);border-radius:10px;margin-bottom:1.5rem;border:0.5px solid var(--brcs)"><div style="font-size:20px;color:var(--txs)">✓</div><div><div style="font-size:14px;font-weight:500;color:var(--txs)">응답 및 AI 분석 결과가 구글 시트에 저장되었습니다</div><div style="font-size:12px;color:var(--txs);opacity:.8">결과는 연구 목적으로만 활용되며 개인 정보는 익명으로 처리됩니다.</div></div></div>';
+
+  // 헤더
+  h+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:2px solid var(--brci)">';
+  h+='<div><div style="font-size:17px;font-weight:500;color:var(--tx)">AI 역량 종합 진단 및 맞춤 추천</div>';
+  h+='<div style="font-size:12px;color:var(--tx2)">'+(S.savedInfo?e(S.savedInfo.name||"선생님")+" · 경력 "+e(S.savedInfo.career||"?")+"년 · "+e(S.savedInfo.grade||"?")+" · "+(S.savedInfo.timing==="pre"?"사전":"사후")+" 조사":"")+'</div></div>';
+  h+='<div style="display:flex;gap:6px;flex-wrap:wrap">';
+  if(!S.aiLoad&&secs.length>0){
+    h+='<button onclick="dlPlan()" style="font-size:12px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--brcs);background:var(--bgs);color:var(--txs);cursor:pointer;font-weight:500">계획서 HTML ↓</button>';
+    h+='<button onclick="dlWord()" style="font-size:12px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--brci);background:var(--bgi);color:var(--txi);cursor:pointer;font-weight:500">계획서 Word ↓</button>';
+  }
+  h+='<button onclick="reset()" style="font-size:12px;padding:7px 12px;border-radius:6px;border:0.5px solid var(--bri);background:var(--bg2);color:var(--tx2);cursor:pointer">처음으로</button></div></div>';
+
+  // ── 섹션별 점수 시각화 ──
+  h+='<div style="background:var(--bg);border:0.5px solid var(--bri);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem">';
+  h+='<div style="font-size:14px;font-weight:500;color:var(--tx);margin-bottom:1rem">섹션별 평균 점수 (1~4점)</div>';
+  h+='<div style="display:flex;flex-direction:column;gap:12px">';
+  secDefs.forEach(function(sd){
+    var c=CM[sd.col];
+    var sc=scores[sd.id];
+    var pct=sc?Math.round((Number(sc)-1)/3*100):0;
+    var label=sd.id==="C"?"(높을수록 학습 필요)":sd.id==="D"?"(높을수록 방해됨)":"(높을수록 효능감 높음)";
+    h+='<div>';
+    h+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">';
+    h+='<div style="font-size:12px;font-weight:500;color:var(--tx);white-space:pre-line">'+e(sd.label)+'<span style="font-size:10px;color:var(--tx2);font-weight:400;margin-left:4px">'+label+'</span></div>';
+    h+='<div style="font-size:18px;font-weight:600;color:'+c.tx+';">'+(sc||"-")+'</div></div>';
+    h+='<div style="height:10px;background:var(--bg2);border-radius:999px;overflow:hidden">';
+    h+='<div style="height:10px;width:'+pct+'%;background:'+c.tx+';border-radius:999px;transition:width .6s ease"></div></div>';
+    // 문항별 미니 점수 (작은 점)
+    h+='<div style="display:flex;gap:3px;margin-top:4px;flex-wrap:wrap">';
+    SECS.filter(function(s){return s.id===sd.id;})[0].it.forEach(function(_,i){
+      var v=S.resp[sd.id+"_"+i];var pct2=v!==undefined?Math.round((v)/3*100):0;
+      h+='<div title="문항 '+(i+1)+': '+(v!==undefined?v+1+"점":"미응답")+'" style="width:14px;height:14px;border-radius:3px;background:'+(v!==undefined?c.bg:"var(--bg2)")+';border:0.5px solid '+(v!==undefined?c.br:"var(--bri)")+';display:flex;align-items:flex-end;overflow:hidden"><div style="width:100%;height:'+(v!==undefined?Math.round((v+1)/4*100):0)+'%;background:'+c.tx+';transition:height .4s"></div></div>';
+    });
+    h+='</div></div>';
+  });
+  h+='</div></div>';
+
+  // 로딩
+  if(S.aiLoad){
+    h+='<div style="text-align:center;padding:3rem;color:var(--tx2)"><div style="display:flex;gap:6px;justify-content:center;margin-bottom:1rem">';
+    for(var i=0;i<3;i++)h+='<div style="width:10px;height:10px;border-radius:50%;background:var(--txi);animation:bn 1.2s infinite ease-in-out;animation-delay:'+(i*0.2)+'s"></div>';
+    h+='</div><div style="font-size:14px;font-weight:500;margin-bottom:4px">AI가 설문 결과를 분석하고 있어요...</div><div style="font-size:12px">경력, 효능감 점수, 학습 필요 영역을 종합 분석 중입니다.</div></div>';
+  }
+
+  // AI 분석 결과 카드
+  if(!S.aiLoad&&secs.length>0){
+    secs.forEach(function(sec){
+      var c=CM[cm[sec.t]||"i"];
+      h+='<div style="background:var(--bg);border:0.5px solid var(--bri);border-radius:12px;overflow:hidden;margin-bottom:1rem"><div style="background:'+c.bg+';padding:12px 16px;display:flex;align-items:center;gap:8px"><div style="width:6px;height:6px;border-radius:50%;background:'+c.tx+';flex-shrink:0"></div><div style="font-size:14px;font-weight:500;color:'+c.tx+'">'+e(sec.t)+'</div></div>';
+      h+='<div style="padding:1rem 1.25rem;font-size:13px;line-height:1.85;color:var(--tx2);white-space:pre-wrap">'+e(sec.b)+'</div></div>';
+    });
+    h+='<div style="background:var(--bgs);border:0.5px solid var(--brcs);border-radius:12px;padding:1.25rem;text-align:center;margin-top:.5rem">';
+    h+='<div style="font-size:14px;font-weight:500;color:var(--txs);margin-bottom:6px">역량 개발 계획서 다운로드</div>';
+    h+='<div style="font-size:12px;color:var(--txs);opacity:.8;margin-bottom:1rem">인쇄·PDF 저장용 HTML 또는 Word 파일로 저장하세요</div>';
+    h+='<div style="display:flex;gap:10px;justify-content:center">';
+    h+='<button onclick="dlPlan()" style="padding:10px 22px;font-size:13px;font-weight:500;border-radius:8px;border:none;background:var(--txs);color:#fff;cursor:pointer">HTML로 저장</button>';
+    h+='<button onclick="dlWord()" style="padding:10px 22px;font-size:13px;font-weight:500;border-radius:8px;border:none;background:var(--txi);color:#fff;cursor:pointer">Word(.doc)로 저장</button>';
+    h+='</div></div>';
+  }
+  if(!S.aiLoad&&!S.aiTxt)h+='<div style="text-align:center;padding:2rem;color:var(--tx2);font-size:13px">AI 분석 결과를 불러오지 못했습니다.</div>';
+  h+='</div>';
+  return h;
+}
+
+// ── 관리자 ──────────────────────────────────────────────────────
+function rAdmin(){
+  var pre=S.aData.filter(function(d){return d.info&&d.info.timing==="pre";});
+  var post=S.aData.filter(function(d){return d.info&&d.info.timing==="post";});
+  var tabs=["sum","ind","itm","ai"],tl=["요약","개별 응답","문항별 평균","AI 분석"];
+  var v=S.aView;
+  var h='<div style="max-width:760px;margin:0 auto;padding:1rem 0 4rem">';
+  h+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:2px solid var(--brci)"><div><div style="font-size:16px;font-weight:500">관리자 — 응답 현황</div><div style="font-size:12px;color:var(--tx2)">전체 '+S.aData.length+'건 (사전 '+pre.length+' / 사후 '+post.length+')</div></div>';
+  h+='<div style="display:flex;gap:8px;flex-wrap:wrap"><button onclick="reload()" style="font-size:12px;padding:6px 12px;border-radius:6px;border:0.5px solid var(--brci);background:var(--bgi);color:var(--txi);cursor:pointer">새로고침</button><button onclick="dlCSV()" style="font-size:12px;padding:6px 12px;border-radius:6px;border:0.5px solid var(--brcs);background:var(--bgs);color:var(--txs);cursor:pointer">CSV</button><button onclick="S.page=\'survey\';render()" style="font-size:12px;padding:6px 12px;border-radius:6px;border:0.5px solid var(--bri);background:var(--bg2);color:var(--tx2);cursor:pointer">← 설문</button></div></div>';
+  h+='<div style="display:flex;gap:4px;margin-bottom:1rem">';
+  tabs.forEach(function(t,i){h+='<button onclick="S.aView=\''+t+'\';render()" style="padding:7px 14px;font-size:12px;border-radius:6px;border:0.5px solid var(--bri);background:'+(v===t?"var(--bgi)":"var(--bg2)")+';color:'+(v===t?"var(--txi)":"var(--tx2)")+';cursor:pointer">'+tl[i]+'</button>';});
+  h+='</div>';
+  if(v==="sum")h+=rSum(pre,post);
+  else if(v==="ind")h+=rInd();
+  else if(v==="itm")h+=rItm(pre,post);
+  else if(v==="ai")h+=rAI();
+  h+='</div>';
+  return h;
+}
+
+function sAvg(r,id,cnt){var vs=[];for(var i=0;i<cnt;i++){var v=r[id+"_"+i];if(v!==undefined)vs.push(v);}if(!vs.length)return null;return(vs.reduce(function(a,b){return a+b;},0)/vs.length+1).toFixed(2);}
+function gAvg(g,id,cnt){var a=g.map(function(d){return sAvg(d.responses,id,cnt);}).filter(Boolean).map(Number);return a.length?(a.reduce(function(x,y){return x+y;},0)/a.length).toFixed(2):"-";}
+
+function rSum(pre,post){
+  var d=S.aData;
+  var h='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.25rem">';
+  [["전체",d.length,"i"],["사전",pre.length,"s"],["사후",post.length,"w"],["미분류",d.filter(function(x){return!x.info||!x.info.timing;}).length,"d"]].forEach(function(b){var c=CM[b[2]];h+='<div style="background:'+c.bg+';border-radius:10px;padding:12px;text-align:center"><div style="font-size:22px;font-weight:500;color:'+c.tx+'">'+b[1]+'건</div><div style="font-size:11px;color:'+c.tx+'">'+b[0]+'</div></div>';});
+  h+='</div><div style="background:var(--bg);border:0.5px solid var(--bri);border-radius:10px;overflow:hidden"><table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr style="background:var(--bg2)">';
+  ["섹션","내용","사전 평균","사후 평균"].forEach(function(hd){h+='<th style="padding:10px 12px;text-align:center;font-weight:500;color:var(--tx2);font-size:12px;border-bottom:0.5px solid var(--bri)">'+hd+'</th>';});
+  h+='</tr></thead><tbody>';
+  [["A","교수 활동 전반 효능감",18],["B","정서 지원 효능감",5],["C","전문성 학습 필요 영역",8],["D","참여 방해 요인",7]].forEach(function(r){h+='<tr style="border-bottom:0.5px solid var(--bri)"><td style="padding:10px 12px;text-align:center;font-weight:500;color:var(--txi)">'+r[0]+'</td><td style="padding:10px 12px;color:var(--tx)">'+r[1]+'</td><td style="padding:10px 12px;text-align:center;color:var(--txs);font-weight:500">'+gAvg(pre,r[0],r[2])+'</td><td style="padding:10px 12px;text-align:center;color:var(--txw);font-weight:500">'+gAvg(post,r[0],r[2])+'</td></tr>';});
+  h+='</tbody></table></div><div style="font-size:11px;color:var(--tx2);margin-top:8px">※ 평균은 1~4점 척도 기준입니다.</div>';
+  return h;
+}
+
+function rInd(){
+  var d=S.aData.slice().sort(function(a,b){return new Date(b.submittedAt||0)-new Date(a.submittedAt||0);});
+  if(!d.length)return'<div style="text-align:center;padding:2rem;color:var(--tx2);font-size:13px">아직 응답이 없습니다.</div>';
+  return d.map(function(x){
+    var ip=x.info&&x.info.timing!=="pre";
+    var h='<div style="background:var(--bg);border:0.5px solid var(--bri);border-radius:10px;padding:1rem;margin-bottom:10px">';
+    h+='<div style="display:flex;justify-content:space-between;margin-bottom:8px"><div><span style="font-weight:500;font-size:13px">'+e(x.info&&x.info.name||"익명")+'</span><span style="font-size:12px;color:var(--tx2);margin-left:8px">경력 '+(x.info&&x.info.career||"?")+'년 · '+(x.info&&x.info.grade||"?")+'</span></div>';
+    h+='<div style="display:flex;gap:6px;align-items:center"><span style="font-size:11px;padding:2px 8px;border-radius:999px;background:'+(ip?"var(--bgw)":"var(--bgs)")+';color:'+(ip?"var(--txw)":"var(--txs)")+'">'+( ip?"사후":"사전")+'</span><span style="font-size:11px;color:var(--tx2)">'+(x.submittedAt?new Date(x.submittedAt).toLocaleDateString("ko-KR"):"")+'</span></div></div>';
+    h+='<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">';
+    [["A",18,"i"],["B",5,"s"],["C",8,"w"],["D",7,"d"]].forEach(function(r){var a=sAvg(x.responses,r[0],r[1]);var c=CM[r[2]];h+='<div style="background:'+c.bg+';border-radius:6px;padding:8px;text-align:center"><div style="font-size:10px;color:'+c.tx+'">섹션 '+r[0]+'</div><div style="font-size:20px;font-weight:500;color:'+c.tx+'">'+(a||"-")+'</div></div>';});
+    h+='</div>';
+    if(x.freeText&&(x.freeText.q39||x.freeText.q40)){h+='<div style="margin-top:10px;padding:8px 10px;background:var(--bg2);border-radius:6px;font-size:12px;color:var(--tx2);line-height:1.65">'+(x.freeText.q39?'<div><b>강점:</b> '+e(x.freeText.q39)+'</div>':'')+(x.freeText.q40?'<div><b>성장:</b> '+e(x.freeText.q40)+'</div>':'')+'</div>';}
+    h+='</div>';
+    return h;
+  }).join("");
+}
+
+function rItm(pre,post){
+  return [SA,SB,SC,SD].map(function(sec){
+    var c=CM[sec.col];
+    var h='<div style="margin-bottom:1.5rem"><div style="font-size:13px;font-weight:500;color:'+c.tx+';margin-bottom:8px;padding:6px 10px;background:'+c.bg+';border-radius:6px">섹션 '+sec.id+' — '+sec.title+'</div>';
+    h+='<div style="background:var(--bg);border:0.5px solid var(--bri);border-radius:10px;overflow:hidden">';
+    h+='<div style="display:grid;grid-template-columns:1fr 72px 72px 72px;padding:6px 12px 4px;border-bottom:0.5px solid var(--bri)"><div style="font-size:10px;color:var(--tx2)">문항</div><div style="text-align:center;font-size:10px;color:var(--txs)">사전</div><div style="text-align:center;font-size:10px;color:var(--txw)">사후</div><div style="text-align:center;font-size:10px;color:var(--tx2)">변화</div></div>';
+    sec.it.forEach(function(item,idx){
+      var pv=pre.map(function(d){return d.responses&&d.responses[sec.id+"_"+idx];}).filter(function(v){return v!==undefined;}).map(function(v){return v+1;});
+      var qv=post.map(function(d){return d.responses&&d.responses[sec.id+"_"+idx];}).filter(function(v){return v!==undefined;}).map(function(v){return v+1;});
+      var pa=pv.length?(pv.reduce(function(a,b){return a+b;},0)/pv.length).toFixed(2):"-";
+      var qa=qv.length?(qv.reduce(function(a,b){return a+b;},0)/qv.length).toFixed(2):"-";
+      var df=(pa!=="-"&&qa!=="-")?(Number(qa)-Number(pa)).toFixed(2):"-";
+      var dc=df!=="-"&&Number(df)>0?"var(--txs)":df!=="-"&&Number(df)<0?"var(--txd)":"var(--tx2)";
+      h+='<div style="display:grid;grid-template-columns:1fr 72px 72px 72px;padding:8px 12px;border-bottom:0.5px solid var(--bri);background:'+(idx%2===0?"transparent":"var(--bg2)")+';align-items:center"><div style="font-size:12px;line-height:1.5"><span style="color:var(--tx2);font-size:11px;margin-right:4px">'+(idx+1)+'.</span>'+e(item)+'</div><div style="text-align:center;font-size:13px;color:var(--txs);font-weight:500">'+pa+'</div><div style="text-align:center;font-size:13px;color:var(--txw);font-weight:500">'+qa+'</div><div style="text-align:center;font-size:12px;font-weight:500;color:'+dc+'">'+(df!=="-"?(Number(df)>0?"+":"")+df:"-")+'</div></div>';
+    });
+    h+='</div></div>';
+    return h;
+  }).join("");
+}
+
+function rAI(){
+  var d=S.anData;
+  if(!d.length)return'<div style="text-align:center;padding:3rem;color:var(--tx2);font-size:13px"><div style="margin-bottom:8px">AI 분석 결과 데이터가 없습니다.</div><div style="font-size:11px">설문 제출 후 AI 분석이 완료된 응답만 표시됩니다.</div></div>';
+  var h="";
+  if(S.selAI){
+    var x=S.selAI;
+    h+='<div style="background:var(--bg);border:2px solid var(--brci);border-radius:12px;padding:1.25rem;margin-bottom:1rem">';
+    h+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:0.5px solid var(--bri)"><div><div style="font-size:15px;font-weight:500">'+e(x.name||"익명")+' 선생님의 AI 분석 결과</div><div style="font-size:11px;color:var(--tx2)">경력 '+(x.career||"?")+'년 · '+(x.grade||"?")+' · '+(x.analyzedAt||"")+'</div></div>';
+    h+='<div style="display:flex;gap:6px"><button onclick="aDlPlan()" style="font-size:12px;padding:6px 12px;border-radius:6px;border:0.5px solid var(--brcs);background:var(--bgs);color:var(--txs);cursor:pointer">계획서 HTML</button><button onclick="aDlWord()" style="font-size:12px;padding:6px 12px;border-radius:6px;border:0.5px solid var(--brci);background:var(--bgi);color:var(--txi);cursor:pointer">Word</button><button onclick="S.selAI=null;render()" style="font-size:12px;padding:6px 12px;border-radius:6px;border:0.5px solid var(--bri);background:var(--bg2);color:var(--tx2);cursor:pointer">닫기</button></div></div>';
+    [["diagnosis","종합 진단","i"],["growthAreas","우선 성장 영역","w"],["recommendations","맞춤 추천 프로그램","s"],["monthlyTasks","이달의 실천 과제","d"]].forEach(function(r){
+      if(!x[r[0]])return;var c=CM[r[2]];
+      h+='<div style="margin-bottom:.75rem;border:0.5px solid var(--bri);border-radius:8px;overflow:hidden"><div style="background:'+c.bg+';padding:8px 12px;font-size:12px;font-weight:500;color:'+c.tx+'">'+r[1]+'</div><div style="padding:10px 12px;font-size:12px;line-height:1.8;color:var(--tx2);white-space:pre-wrap">'+e(x[r[0]])+'</div></div>';
+    });
+    h+='</div>';
+  }
+  d.slice().sort(function(a,b){return new Date(b.analyzedAt||0)-new Date(a.analyzedAt||0);}).forEach(function(x,i){
+    var sel=S.selAI===x,ip=x.timing!=="사전(3월)";
+    h+='<div onclick="selAI('+i+')" style="background:var(--bg);border:0.5px solid '+(sel?"var(--brci)":"var(--bri)")+';border-radius:10px;padding:1rem;margin-bottom:10px;cursor:pointer">';
+    h+='<div style="display:flex;justify-content:space-between;align-items:center"><div><span style="font-weight:500;font-size:13px">'+e(x.name||"익명")+'</span><span style="font-size:12px;color:var(--tx2);margin-left:8px">경력 '+(x.career||"?")+'년 · '+(x.grade||"?")+'</span></div>';
+    h+='<div style="display:flex;gap:6px;align-items:center"><span style="font-size:11px;padding:2px 8px;border-radius:999px;background:'+(ip?"var(--bgw)":"var(--bgs)")+';color:'+(ip?"var(--txw)":"var(--txs)")+'">'+( ip?"사후":"사전")+'</span><span style="font-size:11px;color:var(--txi)">▶</span></div></div>';
+    if(x.diagnosis)h+='<div style="margin-top:8px;font-size:12px;color:var(--tx2);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">'+e(x.diagnosis.slice(0,120))+'...</div>';
+    h+='</div>';
+  });
+  return h;
+}
+
+// ── 이벤트 ──────────────────────────────────────────────────────
+function goStep(i){if(i<0||i>6)return;if(i>S.step&&!(i===S.step+1&&sOk()&&i<=5))return;S.step=i;save();render();}
+function calcScores(){
+  var r={};
+  [SA,SB,SC,SD].forEach(function(sec){
+    var vals=sec.it.map(function(_,i){return S.resp[sec.id+"_"+i];}).filter(function(v){return v!==undefined;});
+    if(vals.length===sec.it.length)r[sec.id]=(vals.reduce(function(a,b){return a+b;},0)/vals.length+1).toFixed(2);
+  });
+  return r;
+}
+function sOk(){if(S.step===0)return S.info.timing!=="";if(S.step>=1&&S.step<=4){var s=SECS[S.step-1];return s.it.every(function(_,i){return S.resp[s.id+"_"+i]!==undefined;});}return true;}
+function setR(k,v){S.resp[k]=v;save();render();}
+function prev(){S.step--;save();render();}
+function next(){if(sOk()){S.step++;save();render();}}
+function selAI(i){S.selAI=S.selAI===S.anData[i]?null:S.anData[i];render();}
+function reset(){clear();S=Object.assign(S,{step:0,info:{name:"",career:"",grade:"",timing:""},resp:{},free:{q39:"",q40:""},saving:false,err:"",aiLoad:false,aiTxt:null,savedInfo:null,page:"survey"});render();}
+
+async function submit(){
+  S.saving=true;S.err="";render();
+  var p={id:uid(),submittedAt:new Date().toISOString(),info:Object.assign({},S.info),responses:Object.assign({},S.resp),freeText:Object.assign({},S.free)};
+  try{
+    var r=await api({action:"save",data:p});
+    if(r.ok){
+      S.savedInfo=Object.assign({},S.info);S.saving=false;S.step=6;S.aiLoad=true;render();
+      try{
+        var ar=await api({action:"analyze",prompt:prompt_(p)});
+        var txt=ar.ok?ar.result:"AI 분석 실패: "+(ar.message||"오류");
+        S.aiTxt=txt;S.aiLoad=false;render();
+        if(ar.ok)api({action:"saveAnalysis",data:{responseId:p.id,info:p.info,aiResult:txt}}).catch(function(){});
+        clear();
+      }catch(ex){S.aiTxt="AI 분석 중 오류: "+ex.message;S.aiLoad=false;render();}
+    }else{S.saving=false;S.err="저장 실패: "+r.message;render();}
+  }catch(ex){S.saving=false;S.err="서버 연결 실패: "+ex.message;render();}
+}
+
+async function openAdmin(){
+  var code=prompt("관리자 코드:");if(!code)return;
+  try{
+    var r=await apiG({action:"load",password:code});
+    if(r.ok){
+      S.aData=r.data||[];sessionStorage.setItem("ac",code);
+      try{var ar=await apiG({action:"loadAnalysis",password:code});if(ar.ok)S.anData=ar.data||[];}catch(x){}
+      S.page="admin";render();
+    }else alert(r.message||"불러오기 실패");
+  }catch(ex){alert("연결 실패: "+ex.message);}
+}
+
+async function reload(){
+  var code=sessionStorage.getItem("ac")||"";if(!code)return;
+  try{
+    var r=await apiG({action:"load",password:code});
+    if(r.ok){S.aData=r.data||[];try{var ar=await apiG({action:"loadAnalysis",password:code});if(ar.ok)S.anData=ar.data||[];}catch(x){}render();}
+  }catch(ex){alert("오류: "+ex.message);}
+}
+
+function dlCSV(){
+  var cols=["ID","제출일시","성명","경력","학년","구분"];
+  [SA,SB,SC,SD].forEach(function(s){s.it.forEach(function(_,i){cols.push(s.id+(i+1));});});
+  cols.push("자유39","자유40");
+  var rows=S.aData.map(function(d){
+    var r=[d.id,d.submittedAt,d.info&&d.info.name||"",d.info&&d.info.career||"",d.info&&d.info.grade||"",d.info&&d.info.timing||""];
+    [SA,SB,SC,SD].forEach(function(s){s.it.forEach(function(_,i){var v=d.responses&&d.responses[s.id+"_"+i];r.push(v!==undefined?v+1:"");});});
+    r.push('"'+(d.freeText&&d.freeText.q39||"").replace(/"/g,'""')+'"');
+    r.push('"'+(d.freeText&&d.freeText.q40||"").replace(/"/g,'""')+'"');
+    return r;
+  });
+  var csv=[cols.join(",")].concat(rows.map(function(r){return r.join(",");})).join("\n");
+  var blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8;"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");a.href=url;a.download="장흥초_효능감설문.csv";a.click();
+}
+
+// ── AI 프롬프트 ─────────────────────────────────────────────────
+function prompt_(p){
+  var info=p.info,resp=p.responses,free=p.freeText;
+  var cr=Number(info.career||0);
+  var cg=cr<=5?"초임(1~5년)":cr<=15?"중견(6~15년)":"원로(16년 이상)";
+  var t="당신은 교원 역량 개발 전문 컨설턴트입니다. 아래는 초등학교 교사의 자기역량진단 설문 결과입니다.\n\n";
+  t+="## 기본 정보\n- 경력: "+info.career+"년 ("+cg+")\n- 학년: "+(info.grade||"?")+"\n- 시기: "+(info.timing==="pre"?"사전":"사후")+"\n\n";
+  t+="## 설문 결과 (1=전혀/필요없음 ~ 4=아주/매우)\n\n### A. 교수 활동 전반 효능감\n";
+  SA.it.forEach(function(q,i){var v=resp["A_"+i];t+=(i+1)+". "+q+" → "+(v!==undefined?v+1:"미응답")+"점\n";});
+  t+="\n### B. 정서 지원 효능감\n";
+  SB.it.forEach(function(q,i){var v=resp["B_"+i];t+=(i+1)+". "+q+" → "+(v!==undefined?v+1:"미응답")+"점\n";});
+  t+="\n### C. 전문성 학습 필요 영역 (높을수록 학습 필요)\n";
+  SC.it.forEach(function(q,i){var v=resp["C_"+i];t+=(i+1)+". "+q+" → "+(v!==undefined?v+1:"미응답")+"점\n";});
+  t+="\n### D. 학습 참여 방해 요인 (높을수록 방해됨)\n";
+  SD.it.forEach(function(q,i){var v=resp["D_"+i];t+=(i+1)+". "+q+" → "+(v!==undefined?v+1:"미응답")+"점\n";});
+  if(free&&(free.q39||free.q40)){t+="\n## 서술형\n";if(free.q39)t+="- 강점: "+free.q39+"\n";if(free.q40)t+="- 성장 목표: "+free.q40+"\n";}
+  t+="\n## 요청\n아래 4개 섹션을 반드시 【섹션명】 형식의 헤딩으로 구분하여 한국어로 작성해 주세요.\n반드시 【종합 진단】으로 시작하고, 【우선 성장 영역】, 【맞춤 추천 프로그램】, 【이달의 실천 과제】 순서로 작성하세요.\n\n【종합 진단】\n이 교사의 역량 프로파일을 2~3문단으로 서술 (경력 맥락 반영), 강점 2~3가지와 근거, 주의 깊게 살펴볼 영역 2~3가지\n\n【우선 성장 영역】\nA+B(낮은 효능감)와 C(높은 학습 필요)를 교차 분석하여 가장 우선 개발이 필요한 역량 3가지와 이유, D 방해 요인을 고려한 현실적 성장 경로\n\n【맞춤 추천 프로그램】\n우선 성장 영역별: 1)추천 연수(NTTP·에듀넷 등 실제 연수명) 2)추천 도서(저자·출판사 포함) 3)추천 활동(PLC·수업연구 등) 4)온라인 자료\n\n【이달의 실천 과제】\n지금 당장 시작할 수 있는 작은 실천 3가지 (구체적·실행 가능)\n\n격려와 성장 관점에서 실용적으로 작성해 주세요. 반드시 위 4개 【】 헤딩을 모두 포함하세요.";
+  return t;
+}
+
+function parse(txt){
+  if(!txt)return[];
+  var parts=txt.split(/【([^】]+)】/),r=[];
+  for(var i=1;i<parts.length;i+=2){var t=parts[i].trim(),b=(parts[i+1]||"").trim();if(t&&b)r.push({t:t,b:b});}
+  if(!r.length&&txt.trim())r.push({t:"분석 결과",b:txt.trim()});
+  return r;
+}
+
+// ── 역량 개발 계획서 ────────────────────────────────────────────
+function makePlan(info,secs,scores){
+  var today=new Date().toLocaleDateString("ko-KR");
+  var cr=Number(info&&info.career||0);
+  var cg=cr<=5?"초임":cr<=15?"중견":"원로";
+  var sb={"종합 진단":"#e6f1fb","우선 성장 영역":"#faeeda","맞춤 추천 프로그램":"#eaf3de","이달의 실천 과제":"#fcebeb"};
+  var st={"종합 진단":"#185fa5","우선 성장 영역":"#854f0b","맞춤 추천 프로그램":"#3b6d11","이달의 실천 과제":"#a32d2d"};
+  var sd={"종합 진단":"#378add","우선 성장 영역":"#ba7517","맞춤 추천 프로그램":"#639922","이달의 실천 과제":"#f09595"};
+
+  var scHtml="";
+  if(scores){
+    var sdefs=[{id:"A",label:"교수 활동 전반 효능감",col:"#185fa5"},{id:"B",label:"정서 지원 효능감",col:"#3b6d11"},{id:"C",label:"전문성 학습 필요 영역",col:"#854f0b"},{id:"D",label:"참여 방해 요인",col:"#a32d2d"}];
+    scHtml='<div style="margin-bottom:1.5rem"><div style="font-size:15px;font-weight:600;color:#1F4E79;border-bottom:2px solid #1F4E79;padding-bottom:6px;margin-bottom:12px">섹션별 평균 점수 (1~4점)</div>';
+    sdefs.forEach(function(d){
+      var sc=scores[d.id]||"-";
+      var pct=sc!=="-"?Math.round((Number(sc)-1)/3*100):0;
+      scHtml+='<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:13px;font-weight:500;color:'+d.col+'">'+d.label+'</span><span style="font-size:15px;font-weight:700;color:'+d.col+'">'+sc+'점</span></div>';
+      scHtml+='<div style="height:10px;background:#f0f0f0;border-radius:999px;overflow:hidden"><div style="height:10px;width:'+pct+'%;background:'+d.col+';border-radius:999px"></div></div></div>';
+    });
+    scHtml+='</div>';
+  }
+
+  var sh=secs.map(function(s){return'<div style="margin-bottom:1.5rem;border-radius:10px;overflow:hidden;border:1.5px solid '+(sd[s.t]||"#ccc")+'"><div style="background:'+(sb[s.t]||"#f5f5f5")+';padding:10px 16px;font-size:14px;font-weight:600;color:'+(st[s.t]||"#333")+'">'+s.t+'</div><div style="padding:14px 16px;font-size:13px;line-height:1.9;color:#333;white-space:pre-wrap;background:#fff">'+s.b+'</div></div>';}).join("");
+  return"<!DOCTYPE html><html lang='ko'><head><meta charset='UTF-8'><title>역량 개발 계획서</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Malgun Gothic',sans-serif;background:#f5f5f5;padding:2rem}.page{max-width:800px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.1)}.cover{background:#1F4E79;padding:2rem 2.5rem;color:#fff}.cover h1{font-size:22px;font-weight:700;margin-bottom:.5rem}.cover p{font-size:13px;opacity:.8}.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.25rem 2rem;background:#e6f1fb;border-bottom:1px solid #ddd}.meta-item label{display:block;font-size:11px;color:#5f5e5a;margin-bottom:3px}.meta-item span{font-size:14px;font-weight:500;color:#185fa5}.body{padding:1.5rem 2rem}.footer{padding:1rem 2rem;background:#f5f5f4;border-top:1px solid #eee;font-size:11px;color:#888;text-align:center}@media print{body{background:#fff;padding:0}.page{box-shadow:none}@page{margin:1.5cm}}</style></head><body><div class='page'><div class='cover'><h1>교원 역량 개발 계획서</h1><p>장흥초등학교 · 2026학년도 연구학교 · TALIS 2024 기반 AI 분석</p></div><div class='meta'><div class='meta-item'><label>성명</label><span>"+(info&&info.name||"(익명)")+"</span></div><div class='meta-item'><label>경력</label><span>"+(info&&info.career||"?")+"년 ("+cg+")</span></div><div class='meta-item'><label>담당 학년</label><span>"+(info&&info.grade||"?")+"</span></div><div class='meta-item'><label>조사 시기</label><span>"+(info&&info.timing==="pre"?"사전 (3월)":"사후 (10월)")+"</span></div><div class='meta-item'><label>작성일</label><span>"+today+"</span></div><div class='meta-item'><label>분석 도구</label><span>Gemini AI + TALIS 2024</span></div></div><div class='body'>"+scHtml+sh+"</div><div class='footer'>이 문서는 AI 분석 결과를 바탕으로 자동 생성된 역량 개발 계획서입니다. · 장흥초등학교 2026 연구학교</div></div></body></html>";
+}
+
+function openPlan(html){
+  var blob=new Blob([html],{type:"text/html;charset=utf-8"});
+  var url=URL.createObjectURL(blob);
+  var win=window.open(url,"_blank","width=900,height=700");
+  if(!win){var a=document.createElement("a");a.href=url;a.download="역량개발계획서.html";a.click();}
+}
+
+function dlWord(){
+  var secs=parse(S.aiTxt||"");
+  var info=S.savedInfo;
+  makeWord(info,secs,calcScores());
+}
+
+function aDlWord(){
+  if(!S.selAI)return;
+  var x=S.selAI;
+  var info={name:x.name,career:x.career,grade:x.grade,timing:x.timing==="사전(3월)"?"pre":"post"};
+  makeWord(info,parse(x.fullText||""),null);
+}
+
+function makeWord(info,secs,scores){
+  var today=new Date().toLocaleDateString("ko-KR");
+  var cr=Number(info&&info.career||0);
+  var cg=cr<=5?"초임":cr<=15?"중견":"원로";
+
+  var scHtml="";
+  if(scores){
+    var secDefs=[{id:"A",label:"교수 활동 전반 효능감",col:"#185fa5"},{id:"B",label:"정서 지원 효능감",col:"#3b6d11"},{id:"C",label:"전문성 학습 필요 영역",col:"#854f0b"},{id:"D",label:"참여 방해 요인",col:"#a32d2d"}];
+    scHtml='<h2 style="font-size:14pt;color:#1F4E79;border-bottom:2pt solid #1F4E79;padding-bottom:4pt;margin-top:16pt">섹션별 평균 점수</h2><table style="width:100%;border-collapse:collapse;margin-bottom:16pt">';
+    scHtml+='<tr style="background:#1F4E79;color:#fff"><th style="padding:6pt 10pt;text-align:left;font-size:11pt">섹션</th><th style="padding:6pt 10pt;text-align:center;font-size:11pt">평균 (1~4점)</th><th style="padding:6pt 10pt;text-align:left;font-size:11pt">수준</th></tr>';
+    secDefs.forEach(function(sd,i){
+      var sc=scores[sd.id]||"-";
+      var lv=sc==="-"?"-":Number(sc)>=3.5?"매우 높음":Number(sc)>=2.5?"보통":Number(sc)>=1.5?"낮음":"매우 낮음";
+      scHtml+='<tr style="background:'+(i%2===0?"#f5f9ff":"#fff")+'"><td style="padding:6pt 10pt;font-size:11pt;color:'+sd.col+'"><b>'+sd.label+'</b></td><td style="padding:6pt 10pt;text-align:center;font-size:13pt;font-weight:bold;color:'+sd.col+'">'+sc+'</td><td style="padding:6pt 10pt;font-size:11pt">'+lv+'</td></tr>';
+    });
+    scHtml+='</table>';
+  }
+
+  var sb={"종합 진단":"#e6f1fb","우선 성장 영역":"#faeeda","맞춤 추천 프로그램":"#eaf3de","이달의 실천 과제":"#fcebeb"};
+  var st={"종합 진단":"#185fa5","우선 성장 영역":"#854f0b","맞춤 추천 프로그램":"#3b6d11","이달의 실천 과제":"#a32d2d"};
+  var secHtml=secs.map(function(s){
+    var body=s.b.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    return '<h2 style="font-size:13pt;color:'+(st[s.t]||"#333")+';background:'+(sb[s.t]||"#f5f5f5")+';padding:6pt 10pt;margin-top:14pt;margin-bottom:6pt;border-left:4pt solid '+(st[s.t]||"#333")+'">'+s.t+'</h2><p style="font-size:11pt;line-height:1.8;color:#333;white-space:pre-wrap;margin:0 0 10pt 0">'+body+'</p>';
+  }).join("");
+
+  var html="<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>"
+    +"<head><meta charset='UTF-8'>"
+    +"<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>90</w:Zoom><w:DoNotOptimizeForBrowser/></w:WordDocument></xml><![endif]-->"
+    +"<style>@page{size:A4;margin:2cm 2.5cm}body{font-family:'맑은 고딕','Malgun Gothic',sans-serif;font-size:11pt;color:#1a1a18;line-height:1.6}"
+    +"h1{font-size:18pt;color:#fff;background:#1F4E79;padding:12pt 16pt;margin:0}table{border-collapse:collapse}td,th{border:0.5pt solid #ddd}</style>"
+    +"</head><body>"
+    +"<h1>교원 역량 개발 계획서</h1>"
+    +"<p style='background:#e6f1fb;padding:6pt 10pt;font-size:10pt;color:#185fa5;margin:0 0 14pt 0'>장흥초등학교 · 2026학년도 연구학교 · TALIS 2024 기반 AI 분석</p>"
+    +"<table style='width:100%;margin-bottom:14pt'>"
+    +"<tr><td style='padding:5pt 10pt;width:25%;background:#1F4E79;color:#fff;font-size:10pt'>성명</td><td style='padding:5pt 10pt;font-size:11pt'>"+(info&&info.name||"(익명)")+"</td>"
+    +"<td style='padding:5pt 10pt;width:25%;background:#1F4E79;color:#fff;font-size:10pt'>경력</td><td style='padding:5pt 10pt;font-size:11pt'>"+(info&&info.career||"?")+"년 ("+cg+")</td></tr>"
+    +"<tr><td style='padding:5pt 10pt;background:#1F4E79;color:#fff;font-size:10pt'>담당 학년</td><td style='padding:5pt 10pt;font-size:11pt'>"+(info&&info.grade||"?")+"</td>"
+    +"<td style='padding:5pt 10pt;background:#1F4E79;color:#fff;font-size:10pt'>조사 시기</td><td style='padding:5pt 10pt;font-size:11pt'>"+(info&&info.timing==="pre"?"사전 (3월)":"사후 (10월)")+"</td></tr>"
+    +"<tr><td style='padding:5pt 10pt;background:#1F4E79;color:#fff;font-size:10pt'>작성일</td><td style='padding:5pt 10pt;font-size:11pt'>"+today+"</td>"
+    +"<td style='padding:5pt 10pt;background:#1F4E79;color:#fff;font-size:10pt'>분석 도구</td><td style='padding:5pt 10pt;font-size:11pt'>Gemini AI + TALIS 2024</td></tr>"
+    +"</table>"
+    +scHtml
+    +secHtml
+    +"<p style='margin-top:20pt;font-size:9pt;color:#888;border-top:0.5pt solid #ddd;padding-top:6pt'>이 문서는 AI 분석 결과를 바탕으로 자동 생성된 역량 개발 계획서입니다. · 장흥초등학교 2026 연구학교</p>"
+    +"</body></html>";
+
+  var blob=new Blob(["\uFEFF"+html],{type:"application/msword;charset=utf-8"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url;
+  a.download="역량개발계획서_"+(info&&info.name||"교사")+"_"+today.replace(/\./g,"").replace(/ /g,"")+".doc";
+  a.click();
+}
+
+function dlPlan(){openPlan(makePlan(S.savedInfo,parse(S.aiTxt||""),calcScores()));}
+function aDlPlan(){if(!S.selAI)return;var x=S.selAI;openPlan(makePlan({name:x.name,career:x.career,grade:x.grade,timing:x.timing==="사전(3월)"?"pre":"post"},parse(x.fullText||""),null));}
+
+// ── 초기 실행 ───────────────────────────────────────────────────
+var hadDraft=load();
+render();
+if(hadDraft){
+  var nb=document.createElement("div");
+  nb.style.cssText="position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:var(--bgi);color:var(--txi);border:0.5px solid var(--brci);border-radius:10px;padding:12px 20px;font-size:13px;font-weight:500;z-index:999;box-shadow:0 2px 12px rgba(0,0,0,.15);white-space:nowrap";
+  nb.innerHTML='이전에 작성하던 내용이 복원되었어요 ✓ &nbsp;<button onclick="this.parentNode.remove()" style="background:none;border:none;color:var(--txi);cursor:pointer;font-size:13px">확인</button>';
+  document.body.appendChild(nb);
+  setTimeout(function(){if(nb.parentNode)nb.remove();},4000);
+}
+</script>
+</body>
+</html>
